@@ -14,6 +14,12 @@ function App() {
   const tipAmountPerPerson =
     (bill * (tipPercentage / 100)) / numberOfPeople || 0;
   const totalPerPerson = bill / numberOfPeople + tipAmountPerPerson || 0;
+
+  function handleReset() {
+    setNumberOfPeople(0);
+    setTipPercentage(0);
+    setBill(0);
+  }
   return (
     <div className="bg-light-grayish-cyan min-h-screen flex flex-col items-center justify-center gap-10 p-2">
       <img src={logo} />
@@ -100,7 +106,10 @@ function App() {
               </div>
             </section>
           </div>
-          <button className="bg-strong-cyan w-full rounded-md h-[30px] hover:bg-light-grayish-cyan text-very-dark-cyan font-bold">
+          <button
+            onClick={handleReset}
+            className="bg-strong-cyan w-full rounded-md h-[30px] hover:bg-light-grayish-cyan text-very-dark-cyan font-bold"
+          >
             RESET
           </button>
         </div>

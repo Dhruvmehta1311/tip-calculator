@@ -7,13 +7,15 @@ import { useState } from "react";
 const tips = [5, 10, 15, 25, 50];
 
 function App() {
-  const [bill, setBill] = useState(0);
-  const [tipPercentage, setTipPercentage] = useState(0);
-  const [numberOfPeople, setNumberOfPeople] = useState(1);
+  const [bill, setBill] = useState("");
+  const [tipPercentage, setTipPercentage] = useState("");
+  const [numberOfPeople, setNumberOfPeople] = useState("");
 
   const tipAmountPerPerson =
-    (bill * (tipPercentage / 100)) / numberOfPeople || 0;
-  const totalPerPerson = bill / numberOfPeople + tipAmountPerPerson || 0;
+    (parseFloat(bill) * (parseFloat(tipPercentage) / 100)) / numberOfPeople ||
+    0;
+  const totalPerPerson =
+    parseFloat(bill) / parseInt(numberOfPeople) + tipAmountPerPerson || 0;
 
   function handleReset() {
     setNumberOfPeople(0);
@@ -37,6 +39,7 @@ function App() {
                 onChange={(e) => setBill(parseFloat(e.target.value))}
                 placeholder="0"
                 type="number"
+                value={bill}
                 className="border h-[38px] w-full rounded text-right outline-strong-cyan font-bold bg-very-light-grayish-cyan px-2 text-very-dark-cyan"
               />
               <BiDollar className="absolute top-2.5 left-2 text-light-grayish-cyan" />
@@ -63,6 +66,7 @@ function App() {
               <input
                 onChange={(d) => setTipPercentage(Number(d.target.value))}
                 placeholder="Custom"
+                value={tipPercentage}
                 type="number"
                 className="border h-[32px] w-f rounded outline-strong-cyan text-bold bg-very-light-grayish-cyan px-2 "
               />
@@ -78,6 +82,7 @@ function App() {
                 onChange={(e) => setNumberOfPeople(Number(e.target.value))}
                 placeholder="0"
                 type="number"
+                value={numberOfPeople}
                 className="border h-[38px] w-full rounded text-right outline-strong-cyan bg-very-light-grayish-cyan px-2 font-bold text-very-dark-cyan"
               />
               <IoPerson className="absolute top-2.5 left-2.5 text-light-grayish-cyan" />
@@ -93,7 +98,7 @@ function App() {
                 <p className="text-white font-mono text-xs">/ Person</p>
               </div>
               <div className="text-strong-cyan text-4xl font-semibold">
-                ${tipAmountPerPerson}
+                ${tipAmountPerPerson.toFixed(2)}
               </div>
             </section>
             <section className="flex justify-between items-center">
@@ -102,7 +107,7 @@ function App() {
                 <p className="text-white font-mono text-xs">/ Person</p>
               </div>
               <div className="text-strong-cyan text-4xl font-semibold">
-                ${totalPerPerson}
+                ${totalPerPerson.toFixed(2)}
               </div>
             </section>
           </div>

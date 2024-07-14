@@ -15,7 +15,7 @@ function App() {
     (bill * (tipPercentage / 100)) / numberOfPeople || 0;
   const totalPerPerson = bill / numberOfPeople + tipAmountPerPerson || 0;
   return (
-    <div className="bg-light-grayish-cyan min-h-screen flex flex-col items-center justify-center gap-10 p-6">
+    <div className="bg-light-grayish-cyan min-h-screen flex flex-col items-center justify-center gap-10 p-2">
       <img src={logo} />
       <main className="bg-white p-4 flex md:flex-row flex-col gap-6 rounded-2xl">
         {/* Left Section */}
@@ -79,9 +79,9 @@ function App() {
           </div>
         </div>
         {/* Right Section */}
-        <div className="bg-very-dark-cyan px-5 pt-8 pb-6  flex flex-col justify-between md:w-1/2 rounded-md">
-          <div className="flex flex-col gap-6">
-            <section className="flex justify-between ">
+        <div className="bg-very-dark-cyan px-5 pt-8 pb-6  flex flex-col md:justify-between gap-10 md:gap-0 md:w-1/2 rounded-xl">
+          <div className="flex flex-col gap-5">
+            <section className="flex justify-between items-center">
               <div>
                 <p className="text-white">Tip Amount</p>
                 <p className="text-white font-mono text-xs">/ Person</p>
@@ -90,7 +90,7 @@ function App() {
                 ${tipAmountPerPerson}
               </div>
             </section>
-            <section className="flex justify-between">
+            <section className="flex justify-between items-center">
               <div>
                 <p className="text-white">Total</p>
                 <p className="text-white font-mono text-xs">/ Person</p>
